@@ -1,5 +1,6 @@
 const express = require('express');
 const mongoose = require('mongoose');
+const sanitize = require('express-mongo-sanitize');
 const bodyParser = require('body-parser');
 const path = require('path');
 const app = express();
@@ -17,6 +18,7 @@ app.use((req, res, next) => {
 });
 
 app.use(bodyParser.json());
+app.use(sanitize());
 
 const sauceRoutes = require('./routes/sauce');
 const userRoutes = require('./routes/user');
